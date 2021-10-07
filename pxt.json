@@ -1,14 +1,14 @@
 {
-    "name": "cak",
+    "name": "cak-land",
     "version": "1.0.1",
-    "description": "Climate Action Kit",
+    "description": "Land Climate Action Kit",
     "license": "MIT",
     "dependencies": {
         "core": "*"
     },
     "files": [
         "README.md",
-        "cak.ts",
+        "cak-land.ts",
         "pump.ts",
         "servo.ts",
         "touch.ts",
