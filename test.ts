@@ -6,7 +6,6 @@
     basic.pause(1000)
     motor.turnRight(50)
     basic.pause(1000)
-    motor.setPowers(MotorPower.OFF)
 
    
     // // Servos

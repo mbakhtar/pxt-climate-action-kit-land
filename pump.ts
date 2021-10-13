@@ -52,11 +52,11 @@ namespace pump {
         pumpSpeed = remapSpeed(speed)
 
         if (whichPump == Pump.LEFT) {
-            pins.analogSetPeriod(cakLand.M1_PWR, 1024)
-            pins.analogWritePin(cakLand.M1_PWR, pumpSpeed)
+            pins.analogSetPeriod(cakLand.M1_NEG, 1024)
+            pins.analogWritePin(cakLand.M1_NEG, pumpSpeed)
         } else {
-            pins.analogSetPeriod(cakLand.M2_PWR, 1024)
-            pins.analogWritePin(cakLand.M2_PWR, pumpSpeed)
+            pins.analogSetPeriod(cakLand.M2_NEG, 1024)
+            pins.analogWritePin(cakLand.M2_NEG, pumpSpeed)
         }
     }
 
