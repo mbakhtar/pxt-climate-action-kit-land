@@ -42,3 +42,10 @@ basic.forever(function () {
     basic.pause(1000)
 })
 ```
+## Supported Targets
+
+* for PXT/microbit
+
+## License
+
+MIT
