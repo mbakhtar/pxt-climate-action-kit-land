@@ -9,6 +9,9 @@ namespace touch {
         P12
     }
 
+    // array of currently latched pins. Push to latch, remove to unlatch
+    let latchClosed: TouchPin[] = [];
+
     /**
      * Function used to return actual DigitalPin from enum
      */
@@ -37,5 +40,26 @@ namespace touch {
         else {
             return false
         }
+    }
+
+    /**
+     * Debounced touch control, using flip-flop logic.
+     */
+    //% block="tap at $pin"
+    export function getTap(pin: TouchPin): boolean {
+        let pinStatus = getTouch(pin);
+        let latchStatus = latchClosed.some(p => p == pin);
+        // Push to latch, remove to unlatch
+
+        if (pinStatus && !latchStatus) {
+        // touch and unlatched: register touch, close latch
+            latchClosed.push(pin);
+            return true;
+        } else if (!pinStatus && latchStatus) {
+        // no touch and latched: register no touch, open latch
+            latchClosed = latchClosed.filter(p => p != pin);
+        }
+        return false;
+        // touch on closed latch, or no touch: register no touch
     }
 }
