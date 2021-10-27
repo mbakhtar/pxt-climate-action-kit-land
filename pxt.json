@@ -1,7 +1,7 @@
 {
-    "name": "cak-land",
-    "version": "1.0.1",
-    "description": "Land Climate Action Kit",
+    "name": "climate-action-kit-land",
+    "version": "2.0.1",
+    "description": "Climate Action Kit: Land",
     "license": "MIT",
     "dependencies": {
         "core": "*"

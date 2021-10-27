@@ -1,4 +1,4 @@
-# climate-action-kit
+# Climate Action Kit: Land
 
 This library provides functions to interface with the components of the InkSmith Climate Action Kit. 
 
