@@ -20,8 +20,8 @@ basic.forever(() => {
 Using the touch sensor to display the current moisture level of the soil.
 ```blocks
 basic.forever(function () {
-        if (touch.getTouch(DigitalPin.P1)) {
-            soil.displayMoisture(AnalogPin.P0)
+        if (touch.getTouch(touch.TouchPin.P1)) {
+            soil.displayMoisture(soil.SoilPin.P0)
       } else {
          basic.showLeds(`
              . . . . .
@@ -36,9 +36,9 @@ basic.forever(function () {
 To oscillate servo at p0 up and down
 ```blocks
 basic.forever(function () {
-    servos.setServoPosition(AnalogPin.P0, Position.UP)
+    servos.setServoPosition(servos.ServoPin.P0, Position.UP)
     basic.pause(1000)
-    servos.setServoPosition(AnalogPin.P0, Position.DOWN)
+    servos.setServoPosition(servos.ServoPin.P0, Position.DOWN)
     basic.pause(1000)
 })
 ```
