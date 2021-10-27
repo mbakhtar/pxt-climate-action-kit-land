@@ -14,7 +14,6 @@ basic.forever(() => {
     basic.pause(1000)
     motor.turnLeft(-50)
     basic.pause(1000)
-    motor.setPowers(MotorPower.OFF)
 })
 ```
 Using the touch sensor to display the current moisture level of the soil.
