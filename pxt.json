@@ -1,6 +1,6 @@
 {
     "name": "climate-action-kit-land",
-    "version": "2.0.3",
+    "version": "2.1.1",
     "description": "Climate Action Kit: Land",
     "license": "MIT",
     "dependencies": {
@@ -14,10 +14,10 @@
         "touch.ts",
         "motor.ts",
         "soil.ts",
-        "_locales/fr/cak-jsdoc-strings.json",
-        "_locales/es/cak-jsdoc-strings.json",
-        "_locales/es/cak-strings.json",
-        "_locales/fr/cak-strings.json"
+        "_locales/fr/climate-action-kit-land-jsdoc-strings.json",
+        "_locales/es/climate-action-kit-land-jsdoc-strings.json",
+        "_locales/es/climate-action-kit-land-strings.json",
+        "_locales/fr/climate-action-kit-land-strings.json"
     ],
     "testFiles": [
         "test.ts"
