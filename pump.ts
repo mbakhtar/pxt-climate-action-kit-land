@@ -5,8 +5,8 @@ enum Pump {
     RIGHT = 1
 }
 
-//% weight=13 color=#01579b icon=""
-namespace pump {
+//% weight=13 color=#01579b icon="" block="Pump"
+namespace cakLandPump {
 
     /**
      * Start the pump

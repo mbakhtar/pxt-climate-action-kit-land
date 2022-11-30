@@ -9,8 +9,8 @@ enum Mlevel {
     VERY_DRY = 0
 }
 
-//% weight=13 color=#ff6700 icon=""
-namespace soil {
+//% weight=13 color=#ff6700 icon="" block="Soil"
+namespace cakLandSoil {
 
     export enum SoilPin {
         P0,

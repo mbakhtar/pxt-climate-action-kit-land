@@ -2,9 +2,9 @@
     // Motors
     basic.pause(1000)
     basic.pause(1000)
-    motor.turnLeft(50)
+    cakLandMotor.turnLeft(50)
     basic.pause(1000)
-    motor.turnRight(50)
+    cakLandMotor.turnRight(50)
     basic.pause(1000)
 
    
