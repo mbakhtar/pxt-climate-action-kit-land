@@ -1,22 +1,17 @@
+/// <reference path="./cak-land.ts" />
+
 //% weight=13 color=#ffd43a icon="" block="Motor"
 namespace cakLandMotor {
-  enum Motor {
-    //% block="left"
-    LEFT = 0,
-    //% block="right"
-    RIGHT = 1
-  }
-
   /**
    *Turns the left motor at a specified speed
    */
-    //% block
-    //% blockId=motion_turn_left block="turn left motor at |speed: %speed"
-    //% speed.min=-100 speed.max=100
-    //% weight=60
-    export function turnLeft(speed: number): void {
-      drive(speed, 0);
-    }
+  //% block
+  //% blockId=motion_turn_left block="turn left motor at |speed: %speed"
+  //% speed.min=-100 speed.max=100
+  //% weight=60
+  export function turnLeft(speed: number): void {
+    cakLand.powerMotor(cakLand.BoardSide.LEFT, speed);
+  }
 
   /**
    *Turns the right motor at a specified speed
@@ -26,7 +21,7 @@ namespace cakLandMotor {
   //% speed.min=-100 speed.max=100
   //% weight=50
   export function turnRight(speed: number): void {
-    drive(0, speed);
+    cakLand.powerMotor(cakLand.BoardSide.RIGHT, speed);
   }
 
   /**
@@ -50,40 +45,7 @@ namespace cakLandMotor {
   //% rightWheelSpeed.min=-100 rightWheelSpeed.max=100
   //% weight=40
   export function drive(leftWheelSpeed: number, rightWheelSpeed: number): void {
-    motorControl(Motor.LEFT, leftWheelSpeed)
-    motorControl(Motor.RIGHT, rightWheelSpeed)
-  }
-
-  /**
-   * Advanced control of an individual motor. PWM is set to constant value.
-   */
-  function motorControl(whichMotor: Motor, speed: number): void {
-    // Pick the motor using some magic values
-    let [pos, neg] = selectMotor(whichMotor);
-
-    // drive motors
-    let remappedSpeed = speed * 10;
-    // forward: power to neg, reverse: power to pos
-    pins.analogWritePin(neg, 1023 - Math.abs(Math.max(remappedSpeed, 0)));
-    pins.analogWritePin(pos, 1023 - Math.abs(Math.min(0, remappedSpeed)));
-  }
-
-  function selectMotor(whichMotor: Motor): AnalogPin[] {
-    let pos : AnalogPin, neg : AnalogPin;
-    switch (whichMotor) {
-      case Motor.LEFT:
-        pos = cakLand.M1_POS;
-        neg = cakLand.M1_NEG;
-        break;
-      case Motor.RIGHT:
-        pos = cakLand.M2_POS;
-        neg = cakLand.M2_NEG;
-        break;
-      default:
-        pos = cakLand.M1_POS;
-        neg = cakLand.M1_NEG;
-        break;
-    };
-    return [pos, neg];
+    turnLeft(leftWheelSpeed)
+    turnRight(rightWheelSpeed)
   }
 }
