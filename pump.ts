@@ -1,75 +1,39 @@
+/// <reference path="./cak-land.ts" />
+
 //% weight=13 color=#01579b icon="" block="Pump"
 namespace cakLandPump {
-  enum Pump {
-    //% block="left"
-    LEFT = 0,
-    //% block="right"
-    RIGHT = 1
-  }
-
-
   /**
    * Start the pump
    */
   //% block
-  //% blockId=pump_start block="start %pump pump at speed %speed"
+  //% blockId=pump_start block="start %side pump at speed %speed"
   //% speed.min=0 speed.max=100
   //% weight=45
-  export function start(pump: Pump, speed: number): void {
-    pumpControl(pump, speed)
+  export function pumpStart(side: cakLand.BoardSide, speed: number): void {
+    cakLand.powerMotor(side, speed);
   }
 
   /**
    * Stop the pump
    */
   //% block
-  //% blockId=pump_stop block="stop %pump pump"
+  //% blockId=pump_stop block="stop %side pump"
   //% weight=45
-  export function stop(pump: Pump): void {
-    pumpControl(pump, 0)
+  export function pumpStop(side: cakLand.BoardSide): void {
+    cakLand.powerMotor(side, 0);
   }
 
   /**
    * Set a pump for a specified time at a specified speed.
    */
   //% block
-  //% blockId=pump_duration block="run %pump pump at speed %speed for %duration seconds"
+  //% blockId=pump_duration block="run %side pump at speed %speed for %duration seconds"
   //% duration.min=0 duration.max=10
   //% speed.min=0 speed.max=100
   //% weight=45
-  export function startDuration(pump: Pump, speed: number, duration: number): void {
-    start(pump, speed)
+  export function startDuration(side: cakLand.BoardSide, speed: number, duration: number): void {
+    pumpStart(side, speed)
     basic.pause(duration*1000)
-    stop(pump)
-  }
-
-  /**
-   * Advanced control of an individual pump. PWM is set to constant value.
-   */
-  function pumpControl(whichPump: Pump, speed: number): void {
-    let pumpSpeed: number
-
-    pumpSpeed = remapSpeed(speed)
-
-    if (whichPump == Pump.LEFT) {
-      pins.analogSetPeriod(cakLand.M1_NEG, 1024)
-      pins.analogWritePin(cakLand.M1_NEG, pumpSpeed)
-    } else {
-      pins.analogSetPeriod(cakLand.M2_NEG, 1024)
-      pins.analogWritePin(cakLand.M2_NEG, pumpSpeed)
-    }
-  }
-
-  // Rescale values from 0 - 100 to 0 - 1023
-  function remapSpeed(s: number): number {
-    let returnSpeed: number
-    if (s <= 0) {
-      returnSpeed = 0
-    } else if (s >= 100) {
-      returnSpeed = 1023
-    } else {
-      returnSpeed = (23200 + (s * 791)) / 100
-    }
-    return returnSpeed;
+    pumpStop(side)
   }
 }
