@@ -28,7 +28,7 @@ namespace cakLandMotor {
    *Stop the motors
    */
   //% block
-  //% blockId=motion_stop block="stop motors"
+  //% blockId=motion_stop block="halt motors completely"
   //% weight=45
   export function stop(): void {
     drive(0, 0);
